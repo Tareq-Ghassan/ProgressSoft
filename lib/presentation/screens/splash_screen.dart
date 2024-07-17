@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:progress_soft/bloc/animation/animation_bloc.dart';
 import 'package:progress_soft/controller/init_controller.dart';
+import 'package:progress_soft/presentation/animation/splash_animation.dart';
 import 'package:progress_soft/presentation/constants/icons.dart';
 import 'package:progress_soft/presentation/screens/root.dart';
 
@@ -87,24 +88,7 @@ class _SplashScreenState extends State<SplashScreen>
                     height: 150,
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: _animations.map(
-                    (animation) {
-                      final index = _animations.indexOf(animation);
-                      return SlideTransition(
-                        position: animation,
-                        child: Text(
-                          _text[index],
-                          style: const TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      );
-                    },
-                  ).toList(),
-                ),
+                TextAnimation(animations: _animations, text: _text),
                 //[TODO] show text after animation is done
                 // if (animationDone) const Text('www.progresssoft.com'),
               ],

@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:flutter/material.dart';
 
 /// [AppImages] holds all images in app , this class was implemented to change
@@ -13,7 +15,6 @@ class AppImages extends InheritedWidget {
   static AppImages of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<AppImages>()!;
 
-  /// [appIconWithText] main app icon with `ProgressSoft` text
   String get appIconWithText => 'assets/images/progressSoftWithText.png';
 
   @override

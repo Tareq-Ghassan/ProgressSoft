@@ -1,5 +1,8 @@
 {
   "lang": "العربية",
   "login": "Login",
-  "progressSoft": "ProgressSoft"
+  "password": "Password",
+  "phoneNumber": "Phone number",
+  "progressSoft": "ProgressSoft",
+  "signUp": "Register"
 }

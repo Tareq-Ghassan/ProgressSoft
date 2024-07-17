@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:flutter/material.dart';
 
 /// [AppIcons] holds all icons in app , this class was implemented to change
@@ -13,8 +15,10 @@ class AppIcons extends InheritedWidget {
   static AppIcons of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<AppIcons>()!;
 
-  /// [appIcon] main app icon
   String get appIcon => 'assets/icons/progressSoftLogo.png';
+
+  String get lock => 'assets/icons/lock.png';
+
   @override
   bool updateShouldNotify(AppIcons oldWidget) => false;
 }

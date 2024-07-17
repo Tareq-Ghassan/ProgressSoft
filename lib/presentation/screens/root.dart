@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:progress_soft/bloc/animation/animation_bloc.dart';
 import 'package:progress_soft/bloc/locale/locale_bloc.dart';
+import 'package:progress_soft/bloc/multi_bloc_provider.dart';
+import 'package:progress_soft/presentation/constants/theme/theme_data.dart';
 import 'package:progress_soft/presentation/screens/splash_screen.dart';
 
 /// [navigatorKey] holds application state
@@ -20,14 +21,7 @@ class ProgressSoft extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider<LocaleCubit>(
-          create: (BuildContext context) => LocaleCubit(),
-        ),
-        BlocProvider<AnimationCubit>(
-          create: (BuildContext context) => AnimationCubit(),
-        ),
-      ],
+      providers: multiBlocProvider,
       child: BlocBuilder<LocaleCubit, Locale>(
         builder: (context, locale) {
           return MaterialApp(
@@ -42,11 +36,7 @@ class ProgressSoft extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             locale: locale,
             debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              visualDensity: VisualDensity.adaptivePlatformDensity,
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-              useMaterial3: true,
-            ),
+            theme: themeData,
             home: const SplashScreen(),
           );
         },

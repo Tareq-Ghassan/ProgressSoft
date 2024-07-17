@@ -4,7 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:progress_soft/bloc/locale/locale_bloc.dart';
 import 'package:progress_soft/constants/enum/locale_enum.dart';
 import 'package:progress_soft/presentation/constants/images.dart';
-import 'package:progress_soft/presentation/widgets/common/underlined_button.dart';
+import 'package:progress_soft/presentation/constants/size.dart';
 
 /// [LoginHeader] this represent ther Header of our login Screen
 class LoginHeader extends StatelessWidget {
@@ -19,10 +19,10 @@ class LoginHeader extends StatelessWidget {
 
     final appLocalizations = AppLocalizations.of(context)!;
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 24,
-        right: 16,
-        left: 16,
+      padding: EdgeInsets.only(
+        top: pt24,
+        right: pt16,
+        left: pt16,
       ),
       child: Localizations.override(
         context: context,
@@ -42,8 +42,8 @@ class LoginHeader extends StatelessWidget {
             ),
             Localizations.override(
               context: context,
-              child: UnderlinedTextButton(
-                onTap: () {
+              child: TextButton(
+                onPressed: () {
                   final cubit = context.read<LocaleCubit>();
                   final currentLocale = cubit.state;
                   if (currentLocale.languageCode == Lang.english.value) {
@@ -52,8 +52,12 @@ class LoginHeader extends StatelessWidget {
                     cubit.setLocale(Locale(Lang.english.value));
                   }
                 },
-                color: Colors.black,
-                text: appLocalizations.lang,
+                child: Text(
+                  appLocalizations.lang,
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        decoration: TextDecoration.underline,
+                      ),
+                ),
               ),
             ),
           ],
