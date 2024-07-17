@@ -1,0 +1,3 @@
+class ProgressSoftState {
+  const ProgressSoftState();
+}
