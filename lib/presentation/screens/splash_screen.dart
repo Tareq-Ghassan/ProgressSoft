@@ -89,7 +89,8 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                 ),
                 TextAnimation(animations: _animations, text: _text),
-                //[TODO] show text after animation is done
+                //TODO( show text after animation is done.
+
                 // if (animationDone) const Text('www.progresssoft.com'),
               ],
             ),

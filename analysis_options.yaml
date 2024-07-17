@@ -27,6 +27,7 @@ analyzer:
     unused_import: error
     directives_ordering: error
     sort_pub_dependencies: ignore
+    flutter_style_todos: ignore
 
 linter:
   rules:

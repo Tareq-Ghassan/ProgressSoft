@@ -5,6 +5,7 @@ import 'package:progress_soft/bloc/ui/ui_helper_bloc.dart';
 import 'package:progress_soft/presentation/constants/colors.dart';
 import 'package:progress_soft/presentation/constants/icons.dart';
 import 'package:progress_soft/presentation/constants/size.dart';
+import 'package:progress_soft/presentation/widgets/common/mobile_number_textfield.dart';
 
 /// [LoginForm] represnt login form
 class LoginForm extends StatelessWidget {
@@ -24,29 +25,7 @@ class LoginForm extends StatelessWidget {
             child: Form(
               child: Column(
                 children: [
-                  TextFormField(
-                    autocorrect: false,
-                    autofillHints: const [
-                      AutofillHints.telephoneNumberDevice,
-                    ],
-                    keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.symmetric(vertical: pt16),
-                      // prefixIconColor: Colors.black,
-                      filled: true,
-                      fillColor: Colors.transparent,
-
-                      hintText: appLocalizations.phoneNumber,
-                    ),
-                    // validator: (value) => validateInputUser(context, value),
-                    // onChanged: (value) => {
-                    //   _userName = value,
-                    // },
-                    // onSaved: (newValue) => {
-                    //   _userName = newValue,
-                    // },
-                    textInputAction: TextInputAction.next,
-                  ),
+                  const PhoneNumberTextFormField(),
                   const SizedBox(
                     height: 16,
                   ),

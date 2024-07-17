@@ -1,5 +1,8 @@
 //************* Padding ***********//
 
+/// [pt6] 6 pixel
+double pt6 = 6;
+
 /// [pt8] 8 pixel
 double pt8 = 8;
 
