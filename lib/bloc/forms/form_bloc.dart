@@ -119,3 +119,37 @@ class GenderCubit extends Cubit<String> {
     debugPrint(change.toString());
   }
 }
+
+/// A [OTPCubit] which manages `otp` as its state
+class OTPCubit extends Cubit<String> {
+  /// The initial state of the [OTPCubit] is `''`.
+  OTPCubit() : super('');
+
+  /// [setOTP] function to set a new value for otp
+  void setOTP({required String newVal}) {
+    emit(newVal);
+  }
+
+  @override
+  void onChange(Change<String> change) {
+    super.onChange(change);
+    debugPrint(change.toString());
+  }
+}
+
+/// A [VerifiactionIDCubit] which manages `verification id otp` as its state
+class VerifiactionIDCubit extends Cubit<String> {
+  /// The initial state of the [VerifiactionIDCubit] is `''`.
+  VerifiactionIDCubit() : super('');
+
+  /// [setVerificationID] function to set a new value for otp
+  void setVerificationID({required String newVal}) {
+    emit(newVal);
+  }
+
+  @override
+  void onChange(Change<String> change) {
+    super.onChange(change);
+    debugPrint(change.toString());
+  }
+}

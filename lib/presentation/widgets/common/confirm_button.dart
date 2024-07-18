@@ -3,12 +3,17 @@ import 'package:progress_soft/presentation/constants/size.dart';
 
 /// [ConfrimButton] represent confirmation button `Elevated`
 class ConfrimButton extends StatelessWidget {
+  /// [ConfrimButton] constructor
   const ConfrimButton({
-    super.key,
     required this.title,
     required this.onPressed,
+    super.key,
   });
+
+  /// [onPressed] void call back function
   final VoidCallback? onPressed;
+
+  /// [title] title of button
   final String title;
 
   @override

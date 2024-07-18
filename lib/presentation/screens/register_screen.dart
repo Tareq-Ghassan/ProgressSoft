@@ -22,6 +22,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
         backgroundColor: Colors.white,
+        title: Text(appLocalizations.signUp),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_rounded),
           onPressed: () {

@@ -41,4 +41,10 @@ List<BlocProvider> multiBlocProvider = [
   BlocProvider<GenderCubit>(
     create: (BuildContext context) => GenderCubit(),
   ),
+  BlocProvider<OTPCubit>(
+    create: (BuildContext context) => OTPCubit(),
+  ),
+  BlocProvider<VerifiactionIDCubit>(
+    create: (BuildContext context) => VerifiactionIDCubit(),
+  ),
 ];
