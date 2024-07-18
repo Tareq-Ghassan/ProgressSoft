@@ -17,3 +17,20 @@ class HidePasswordCubit extends Cubit<bool> {
     debugPrint(change.toString());
   }
 }
+
+/// A [ShimmerCubit] which manages `shimmer loading` as its state
+class ShimmerCubit extends Cubit<bool> {
+  /// The initial state of the [ShimmerCubit] is `true`.
+  ShimmerCubit() : super(true);
+
+  /// [setShimmer] function to set a new HidePassword value
+  void setShimmer({required bool newVal}) {
+    emit(newVal);
+  }
+
+  @override
+  void onChange(Change<bool> change) {
+    super.onChange(change);
+    debugPrint(change.toString());
+  }
+}

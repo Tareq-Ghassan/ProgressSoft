@@ -1,16 +1,21 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:progress_soft/presentation/constants/colors.dart';
 import 'package:progress_soft/presentation/constants/size.dart';
-import 'package:progress_soft/presentation/screens/login_screen.dart';
 import 'package:sms_autofill/sms_autofill.dart';
+
+final _firebase = FirebaseAuth.instance;
 
 /// [OTPScreen] represent OTP screen
 class OTPScreen extends StatefulWidget {
   /// [OTPScreen] consturctor.
   const OTPScreen({
     super.key,
+    required this.phone,
   });
+
+  final String phone;
 
   @override
   State<OTPScreen> createState() => _OTPScreenState();
@@ -18,10 +23,33 @@ class OTPScreen extends StatefulWidget {
 
 class _OTPScreenState extends State<OTPScreen> {
   String otpCode = '';
+  String verification = '';
 
   @override
   void initState() {
     listen();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await _firebase.verifyPhoneNumber(
+        phoneNumber: '+962${widget.phone}',
+        timeout: const Duration(seconds: 60),
+        verificationCompleted: (PhoneAuthCredential credential) async {
+          debugPrint('Verification completed:');
+          // Optionally handle auto-retrieval or do nothing here if you do not want to sign in
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          debugPrint('Verification failed: ${e.message}');
+        },
+        codeSent: (String verificationId, int? resendToken) {
+          debugPrint('Verification codeSent:');
+
+          verification = verificationId;
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {
+          debugPrint('Verification timeOut:');
+          // Handle timeout; this can be empty if not needed
+        },
+      );
+    });
     super.initState();
   }
 
@@ -124,7 +152,12 @@ class _OTPScreenState extends State<OTPScreen> {
                               otpCode = code.toString();
 
                               setState(() {});
-                              if (otpCode.length == 6) {}
+                              if (otpCode.length == 6) {
+                                verifyOTP(
+                                  verification,
+                                  otpCode,
+                                );
+                              }
                             },
                             onCodeSubmitted: (val) {
                               debugPrint('OnCodeSubmitted : $val');
@@ -148,11 +181,9 @@ class _OTPScreenState extends State<OTPScreen> {
               child: ElevatedButton(
                 onPressed: otpCode.length == 6
                     ? () {
-                        Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute<dynamic>(
-                            builder: (context) => const LoginScreen(),
-                          ),
-                          (route) => route.isFirst,
+                        verifyOTP(
+                          verification,
+                          otpCode,
                         );
                       }
                     : null,
@@ -165,5 +196,25 @@ class _OTPScreenState extends State<OTPScreen> {
         ),
       ),
     );
+  }
+
+  void verifyOTP(
+    String verificationId,
+    String smsCode,
+  ) {
+    final credential = PhoneAuthProvider.credential(
+      verificationId: verificationId,
+      smsCode: smsCode,
+    );
+
+    _firebase.signInWithCredential(credential).then((userCredential) {
+      if (userCredential.user != null) {
+        Navigator.pop(context);
+      } else {
+        debugPrint('Failed to verify OTP:');
+      }
+    }).catchError((error) {
+      debugPrint('Failed to verify OTP: $error');
+    });
   }
 }

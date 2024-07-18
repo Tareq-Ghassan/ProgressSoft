@@ -27,3 +27,29 @@ final blueAppBarGradient = [
 
 ///[ligthGrayColor] this is the default light gray text color
 const Color ligthGrayColor = Color.fromRGBO(31, 31, 31, 0.15);
+
+///[grayColor] this is the default gray text color
+const Color grayColor = Color.fromRGBO(31, 31, 31, 0.5);
+
+///[shimmerGradient] this is the default LinearGradient colors used for
+///shimmer animation effect
+const shimmerGradient = LinearGradient(
+  colors: [
+    Color(0xFFEBEBF4),
+    Color(0xFFF4F4F4),
+    Color(0xFFEBEBF4),
+  ],
+  stops: [
+    0.1,
+    0.3,
+    0.4,
+  ],
+  begin: Alignment(-1, -0.3),
+  end: Alignment(1, 0.3),
+);
+
+///[greyGradient] a list of colors which give grey color Gradient
+final greyGradient = [
+  const Color.fromRGBO(209, 209, 209, 1),
+  const Color.fromRGBO(235, 235, 235, 1),
+];

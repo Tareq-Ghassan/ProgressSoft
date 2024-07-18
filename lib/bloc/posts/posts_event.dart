@@ -1,3 +1,0 @@
-class ProgressSoftEvent {
-  const ProgressSoftEvent();
-}

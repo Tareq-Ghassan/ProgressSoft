@@ -16,9 +16,12 @@ dependencies:
     sdk: flutter
   intl: any
   flutter_bloc: ^8.1.6
-  logging: ^1.2.0
   sms_autofill: ^2.3.1
   firebase_core: ^3.2.0
+  firebase_auth: ^5.1.2
+  cloud_firestore: ^5.1.0
+  equatable: ^2.0.5
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:

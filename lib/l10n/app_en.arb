@@ -2,10 +2,16 @@
   "confirm": "Confirm",
   "enterThe6DigitNumber": "Enter the 6 digit number that we sent to",
   "enterVerCode": "Enter the verification Code",
+  "exit": "Exit",
+  "fullName": "Full name",
+  "internalServerError": "Unable to process the request",
+  "internalServerErrorDescription": "An error occurred while sending the data. Please try again. If this issue keeps happening, contact our customer center",
   "lang": "العربية",
   "login": "Login",
   "password": "Password",
   "phoneNumber": "Phone number",
   "progressSoft": "ProgressSoft",
-  "signUp": "Register"
+  "signUp": "Register",
+  "somethingWentWrong": "Unable to complete request!",
+  "somethingWentWrongDescription": "An error occurred while retrieving the data. Please try again. If this issue keeps happening, contact our customer center"
 }
