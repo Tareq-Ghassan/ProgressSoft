@@ -1,4 +1,7 @@
 {
+  "confirm": "تاكيد",
+  "enterThe6DigitNumber": "أدخل الرقم المكون من 6 أرقام الذي أرسلناه الى",
+  "enterVerCode": "أدخل رمز التحقق",
   "lang": "English",
   "login": "تسجيل الدخول",
   "password": "كلمة السر",

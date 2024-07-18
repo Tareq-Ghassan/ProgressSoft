@@ -1,4 +1,7 @@
 {
+  "confirm": "Confirm",
+  "enterThe6DigitNumber": "Enter the 6 digit number that we sent to",
+  "enterVerCode": "Enter the verification Code",
   "lang": "العربية",
   "login": "Login",
   "password": "Password",

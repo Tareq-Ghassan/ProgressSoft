@@ -17,6 +17,7 @@ dependencies:
   intl: any
   flutter_bloc: ^8.1.6
   logging: ^1.2.0
+  sms_autofill: ^2.3.1
 
 dev_dependencies:
   flutter_test:

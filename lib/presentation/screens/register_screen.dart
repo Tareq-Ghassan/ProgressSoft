@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:progress_soft/presentation/screens/otp.dart';
 import 'package:progress_soft/presentation/widgets/common/confirm_button.dart';
 import 'package:progress_soft/presentation/widgets/registeration/register_form.dart';
 
@@ -21,7 +22,14 @@ class RegisterScreen extends StatelessWidget {
               const RegisterForm(),
               ConfrimButton(
                 title: appLocalizations.signUp,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<dynamic>(
+                      builder: (context) => const OTPScreen(),
+                    ),
+                  );
+                },
               ),
             ],
           ),

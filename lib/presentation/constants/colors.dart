@@ -15,3 +15,6 @@ const Color blackColor = Color.fromRGBO(0, 0, 0, 1);
 
 ///[elevatedButtonColor] this is the default elevated button color
 const Color elevatedButtonColor = Color.fromRGBO(0, 23, 56, 1);
+
+///[greenColor] this is the default green color
+const Color greenColor = Color.fromRGBO(35, 180, 97, 1);
