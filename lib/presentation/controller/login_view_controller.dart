@@ -45,7 +45,7 @@ String? validateInputPassword(BuildContext context, String? value) {
 
   if (value != null) {
     if (value.isEmpty) {
-      return AppLocalizations.of(context)!.pleaseEnterValidation('pass');
+      return appLocalizations.pleaseEnterValidation('pass');
     }
     final regexString = context
         .read<ConfigrationBloc>()

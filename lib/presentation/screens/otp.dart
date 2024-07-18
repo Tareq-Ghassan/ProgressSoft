@@ -12,10 +12,7 @@ class OTPScreen extends StatefulWidget {
   /// [OTPScreen] consturctor.
   const OTPScreen({
     super.key,
-    required this.phone,
   });
-
-  final String phone;
 
   @override
   State<OTPScreen> createState() => _OTPScreenState();
@@ -30,7 +27,7 @@ class _OTPScreenState extends State<OTPScreen> {
     listen();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await _firebase.verifyPhoneNumber(
-        phoneNumber: '+962${widget.phone}',
+        phoneNumber: '+962',
         timeout: const Duration(seconds: 60),
         verificationCompleted: (PhoneAuthCredential credential) async {
           debugPrint('Verification completed:');

@@ -19,3 +19,6 @@ extension GenderExtension on Gender {
     }
   }
 }
+
+/// [gender] a list of Genders
+List<String> gender = <String>[Gender.male.name, Gender.female.name];

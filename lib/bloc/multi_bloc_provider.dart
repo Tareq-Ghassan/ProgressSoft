@@ -26,4 +26,19 @@ List<BlocProvider> multiBlocProvider = [
   BlocProvider<PhoneNumberCubit>(
     create: (BuildContext context) => PhoneNumberCubit(),
   ),
+  BlocProvider<FullNameCubit>(
+    create: (BuildContext context) => FullNameCubit(),
+  ),
+  BlocProvider<CountryCodeCubit>(
+    create: (BuildContext context) => CountryCodeCubit(),
+  ),
+  BlocProvider<ConfirmPasswordCubit>(
+    create: (BuildContext context) => ConfirmPasswordCubit(),
+  ),
+  BlocProvider<AgeCubit>(
+    create: (BuildContext context) => AgeCubit(),
+  ),
+  BlocProvider<GenderCubit>(
+    create: (BuildContext context) => GenderCubit(),
+  ),
 ];

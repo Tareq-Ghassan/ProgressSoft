@@ -55,10 +55,16 @@ class PhoneNumberTextField extends StatelessWidget {
       onSaved: (value) {
         if (value != null) {
           context.read<PhoneNumberCubit>().setPhone(newVal: value);
+        } else {
+          context.read<PhoneNumberCubit>().setPhone(newVal: '');
         }
       },
       textInputAction: TextInputAction.next,
-      validator: (value) => validatePhoneNumber(context, value, '962'),
+      validator: (value) => validatePhoneNumber(
+        context,
+        value,
+        context.read<CountryCodeCubit>().state,
+      ),
     );
   }
 }
@@ -85,9 +91,11 @@ class DropMenu extends StatelessWidget {
           .countryCodes!
           .codes![0],
       onSelected: (String? value) {
-        // setState(() {
-        //   dropdownValue = value!;
-        // });
+        if (value != null) {
+          context.read<CountryCodeCubit>().setCountryCode(newVal: value);
+        } else {
+          context.read<CountryCodeCubit>().setCountryCode(newVal: '962');
+        }
       },
       dropdownMenuEntries: BlocProvider.of<ConfigrationBloc>(context)
           .state

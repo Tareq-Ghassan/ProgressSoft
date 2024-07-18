@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:progress_soft/bloc/forms/form_bloc.dart';
 import 'package:progress_soft/presentation/constants/size.dart';
+import 'package:progress_soft/presentation/controller/login_view_controller.dart';
 import 'package:progress_soft/presentation/widgets/common/textfield/password_txfield.dart';
 import 'package:progress_soft/presentation/widgets/common/textfield/phone_number_txfield.dart';
 
@@ -10,14 +14,24 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
+
     return Padding(
       padding: EdgeInsets.all(pt16),
-      child: const Form(
+      child: Form(
         child: Column(
           children: [
-            PhoneNumberTextField(),
+            const PhoneNumberTextField(),
             _size,
-            PasswordTextField(),
+            PasswordTextField(
+              title: appLocalizations.password,
+              validator: (value) => validateInputPassword(context, value),
+              onSaved: (value) {
+                if (value != null) {
+                  context.read<PasswordCubit>().setPassword(newVal: value);
+                }
+              },
+            ),
           ],
         ),
       ),
