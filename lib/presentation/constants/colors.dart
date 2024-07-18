@@ -18,3 +18,12 @@ const Color elevatedButtonColor = Color.fromRGBO(0, 23, 56, 1);
 
 ///[greenColor] this is the default green color
 const Color greenColor = Color.fromRGBO(35, 180, 97, 1);
+
+///[blueAppBarGradient] a list of colors which give Blue color Gradient for app bar
+final blueAppBarGradient = [
+  const Color.fromRGBO(7, 44, 72, 1),
+  const Color.fromRGBO(0, 23, 56, 1),
+];
+
+///[ligthGrayColor] this is the default light gray text color
+const Color ligthGrayColor = Color.fromRGBO(31, 31, 31, 0.15);

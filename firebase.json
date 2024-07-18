@@ -1,0 +1,30 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "progresssoft-5e889",
+                    "appId": "1:297836658484:android:0fd0090ab7d882ab286f61",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "ios": {
+                "default": {
+                    "projectId": "progresssoft-5e889",
+                    "appId": "1:297836658484:ios:0c502211cf1ccf8c286f61",
+                    "uploadDebugSymbols": false,
+                    "fileOutput": "ios/Runner/GoogleService-Info.plist"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "progresssoft-5e889",
+                    "configurations": {
+                        "android": "1:297836658484:android:0fd0090ab7d882ab286f61",
+                        "ios": "1:297836658484:ios:0c502211cf1ccf8c286f61"
+                    }
+                }
+            }
+        }
+    }
+}

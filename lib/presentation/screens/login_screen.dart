@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:progress_soft/presentation/screens/home_screen.dart';
 import 'package:progress_soft/presentation/screens/register_screen.dart';
 import 'package:progress_soft/presentation/widgets/common/confirm_button.dart';
 import 'package:progress_soft/presentation/widgets/login/login_form.dart';
@@ -24,7 +25,14 @@ class LoginScreen extends StatelessWidget {
               const LoginHeader(),
               const LoginForm(),
               ConfrimButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<dynamic>(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                  );
+                },
                 title: appLocalizations.login,
               ),
               const OrWidget(),

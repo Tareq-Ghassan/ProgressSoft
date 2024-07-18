@@ -18,6 +18,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   logging: ^1.2.0
   sms_autofill: ^2.3.1
+  firebase_core: ^3.2.0
 
 dev_dependencies:
   flutter_test:
