@@ -6,7 +6,7 @@ import 'package:progress_soft/data/model/configration.dart';
 abstract class ConfigrationState extends Equatable {
   const ConfigrationState();
   @override
-  List<Object> get props => [];
+  List<AppConfig> get props => [];
 }
 
 class ConfigrationIsNotSearched extends ConfigrationState {}
@@ -22,7 +22,7 @@ class ConfigrationIsLoaded extends ConfigrationState {
 
   AppConfig get getConfig => _appConfig;
   @override
-  List<Object> get props => [_appConfig];
+  List<AppConfig> get props => [_appConfig];
 }
 
 class ConfigrationFailure extends ConfigrationState {}

@@ -6,6 +6,8 @@ class AppConfig {
   /// [regex] holds app regex
   RegexConfig? regex;
 
+  CountryCodes? countryCodes;
+
   /// [errorMapping] holds app errors
   Map<String, ErrorMapping>? errorMapping;
 
@@ -21,6 +23,8 @@ class AppConfig {
             ErrorMapping.fromMap(value as Map<String, dynamic>),
           ),
         );
+      case 'countryCodes':
+        countryCodes = CountryCodes.fromJson(data);
     }
   }
 }
@@ -48,15 +52,43 @@ class ErrorMapping {
 /// [RegexConfig] class holds REGEX for all app
 class RegexConfig {
   /// [RegexConfig] constructor
-  RegexConfig({required this.passwordRegex});
+  RegexConfig({
+    required this.passwordRegex,
+    required this.phoneRegex,
+    required this.passwordValidation,
+  });
 
   ///[RegexConfig.fromMap] a `factory` function to map regx
   factory RegexConfig.fromMap(Map<String, dynamic> map) {
     return RegexConfig(
       passwordRegex: map['passwordRegex'] as String,
+      phoneRegex: map['phoneNumber'] as String,
+      passwordValidation: map['passwordValidation'] as String,
     );
   }
 
-  /// [passwordRegex] holds password regex
+  /// [passwordRegex] holds password regex for `new password`
   final String passwordRegex;
+
+  /// [phoneRegex] holds phone regex
+  final String phoneRegex;
+
+  /// [passwordValidation]  holds password regex for `login password`
+  final String passwordValidation;
+}
+
+/// [CountryCodes] holds country code
+class CountryCodes {
+  /// [CountryCodes] constructor
+  CountryCodes({this.codes});
+
+//// [ CountryCodes.fromJson] convert to object
+  factory CountryCodes.fromJson(Map<String, dynamic> json) {
+    return CountryCodes(
+      codes: List<String>.from(json['codes'] as List<dynamic>),
+    );
+  }
+
+  /// [codes] list of Country codes
+  List<String>? codes;
 }

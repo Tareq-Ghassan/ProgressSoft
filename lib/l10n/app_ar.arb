@@ -1,15 +1,26 @@
 {
+  "@pleaseEnterValidation": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
   "confirm": "تاكيد",
   "enterThe6DigitNumber": "أدخل الرقم المكون من 6 أرقام الذي أرسلناه الى",
   "enterVerCode": "أدخل رمز التحقق",
   "exit": "خروج",
   "fullName": "الاسم الكامل",
+  "fullnameMustBe2Syllables": "يجب أن يتكون الإسم الكامل من مقطعيين أو أكثر",
   "internalServerError": "غير قادر على معالجة الطلب",
   "internalServerErrorDescription": " حدث خطأ أثناء إرسال البيانات. حاول مرة اخرى. إذا استمرت هذه المشكلة في الحدوث، فاتصل بمركز العملاء لدينا",
+  "invalidPhoneNumberFormat": "تنسيق رقم الهاتف غير صحيح",
   "lang": "English",
   "login": "تسجيل الدخول",
+  "minimumSixChars": "الحد الأدنى 6 أحرف",
   "password": "كلمة السر",
   "phoneNumber": "رقم التلفون",
+  "pleaseEnterValidation": "الرجاء ادخال {type, select, mobile{رقم الموبايل} pass {الرمز السري} age {ادخل عمرك} fullname{الاسم الكامل} gender {الجنس} other{{type}}}",
   "progressSoft": "ProgressSoft",
   "signUp": "تسجيل",
   "somethingWentWrong": "غير قادر على إكمال الطلب",

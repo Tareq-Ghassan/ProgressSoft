@@ -1,15 +1,26 @@
 {
+  "@pleaseEnterValidation": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
   "confirm": "Confirm",
   "enterThe6DigitNumber": "Enter the 6 digit number that we sent to",
   "enterVerCode": "Enter the verification Code",
   "exit": "Exit",
   "fullName": "Full name",
+  "fullnameMustBe2Syllables": "Full name must be 2 syllables or more",
   "internalServerError": "Unable to process the request",
   "internalServerErrorDescription": "An error occurred while sending the data. Please try again. If this issue keeps happening, contact our customer center",
+  "invalidPhoneNumberFormat": "Invalid Phone Number Format",
   "lang": "العربية",
   "login": "Login",
+  "minimumSixChars": "Minimum 6 characters",
   "password": "Password",
   "phoneNumber": "Phone number",
+  "pleaseEnterValidation": "Please enter {type, select, mobile{phone number}  pass {your Password} age {your Age} fullname{full Name} gender {gender} other{{type}}}",
   "progressSoft": "ProgressSoft",
   "signUp": "Register",
   "somethingWentWrong": "Unable to complete request!",
