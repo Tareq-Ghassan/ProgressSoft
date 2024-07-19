@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:progress_soft/presentation/constants/colors.dart';
 import 'package:progress_soft/presentation/controller/registeration_view_controller.dart';
 import 'package:progress_soft/presentation/widgets/common/confirm_button.dart';
 import 'package:progress_soft/presentation/widgets/register/register_form.dart';
@@ -14,6 +15,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
@@ -21,13 +23,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
-        backgroundColor: Colors.white,
+        backgroundColor: whiteColor,
         title: Text(appLocalizations.signUp),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_rounded),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: SafeArea(
@@ -35,10 +35,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const RegisterForm(),
+              RegisterForm(formKey: _formKey),
               ConfrimButton(
                 title: appLocalizations.signUp,
-                onPressed: onSubmitRegister,
+                onPressed: () => onSubmitRegister(_formKey),
               ),
             ],
           ),

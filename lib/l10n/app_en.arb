@@ -6,7 +6,9 @@
       }
     }
   },
+  "allowedSpecialCharacters": "Allowed special characters ( -,_,@, $)",
   "confirm": "Confirm",
+  "confrimPassword": "Confirm password",
   "enterThe6DigitNumber": "Enter the 6 digit number that we sent to",
   "enterVerCode": "Enter the verification Code",
   "exit": "Exit",
@@ -19,7 +21,11 @@
   "lang": "العربية",
   "loading": "Loading...",
   "login": "Login",
+  "minimumOneDigit": "Minimum 1 digit",
+  "minimumOneLowercaseChar": "Minimum 1 Lowercase character",
+  "minimumOneUppercaseChar": "Minimum 1 Uppercase character",
   "minimumSixChars": "Minimum 6 characters",
+  "minimumSpecialCharacters": "Minimum 1 Special character(s)",
   "password": "Password",
   "passwordsDoNotMatch": "Passwords do not match",
   "phoneNumber": "Phone number",

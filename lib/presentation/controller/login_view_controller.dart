@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +8,7 @@ import 'package:progress_soft/bloc/config/config_bloc.dart';
 import 'package:progress_soft/bloc/forms/form_bloc.dart';
 import 'package:progress_soft/presentation/screens/register_screen.dart';
 import 'package:progress_soft/presentation/screens/root.dart';
+import 'package:progress_soft/presentation/widgets/common/dialog.dart';
 import 'package:progress_soft/presentation/widgets/common/loading_indecator.dart';
 
 final _firebase = FirebaseAuth.instance;
@@ -67,6 +70,7 @@ String? validateInputPassword(BuildContext context, String? value) {
 
 /// [submitLogin] a function to submit login
 Future<void> submitLogin(GlobalKey<FormState> formKey) async {
+  final appLocalizations = AppLocalizations.of(navigatorKey.currentContext!)!;
   final isVaild = formKey.currentState!.validate();
   if (!isVaild) {
     return;
@@ -86,7 +90,42 @@ Future<void> submitLogin(GlobalKey<FormState> formKey) async {
   } on FirebaseAuthException catch (e) {
     LoadingIndicatorDialog().dismiss();
     debugPrint(e.code);
-    if (e.code == 'email-already-in-use') {}
+    if (e.code == 'invalid-credential') {
+      unawaited(
+        showDialog(
+          context: navigatorKey.currentContext!,
+          builder: (context) => CustomDialogBox(
+            title: appLocalizations.somethingWentWrong,
+            descriptions: 'invalid credential',
+            yesButtontext: appLocalizations.exit,
+            yesButtontOnTap: () => Navigator.pop(context),
+          ),
+        ),
+      );
+      return;
+    }
+    if (e.code == 'user-not-found') {
+      unawaited(
+        showDialog(
+          context: navigatorKey.currentContext!,
+          builder: (context) => CustomDialogBox(
+            title: appLocalizations.somethingWentWrong,
+            descriptions: appLocalizations.somethingWentWrongDescription,
+            yesButtontext: appLocalizations.exit,
+            yesButtontOnTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute<dynamic>(
+                  builder: (context) => const RegisterScreen(),
+                ),
+              );
+            },
+          ),
+        ),
+      );
+      return;
+    }
 
     ScaffoldMessenger.of(navigatorKey.currentContext!).clearSnackBars();
     ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(

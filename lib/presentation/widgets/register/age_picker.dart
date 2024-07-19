@@ -44,10 +44,12 @@ class AgePicker extends StatelessWidget {
               }),
             ),
           ),
-          child: Text(
-            agesList[context.read<AgeCubit>().state],
-            style: TextStyle(
-              fontSize: pt24,
+          child: BlocBuilder<AgeCubit, int>(
+            builder: (context, state) => Text(
+              agesList[state],
+              style: TextStyle(
+                fontSize: pt24,
+              ),
             ),
           ),
         ),

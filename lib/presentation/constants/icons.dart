@@ -20,6 +20,8 @@ class AppIcons extends InheritedWidget {
   String get lock => 'assets/icons/lock.png';
 
   String get logoutIcon => 'assets/icons/logout.png';
+  String get check => 'assets/icons/check.png';
+  String get close => 'assets/icons/close.png';
 
   @override
   bool updateShouldNotify(AppIcons oldWidget) => false;

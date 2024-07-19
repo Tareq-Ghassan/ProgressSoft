@@ -6,7 +6,9 @@
       }
     }
   },
+  "allowedSpecialCharacters": "الرموز الخاصة المسموح بها ( -, _, @, $)",
   "confirm": "تاكيد",
+  "confrimPassword": "تأكيد كلمة المرور",
   "enterThe6DigitNumber": "أدخل الرقم المكون من 6 أرقام الذي أرسلناه الى",
   "enterVerCode": "أدخل رمز التحقق",
   "exit": "خروج",
@@ -19,7 +21,11 @@
   "lang": "English",
   "loading": "تحميل...",
   "login": "تسجيل الدخول",
+  "minimumOneDigit": "الحد الأدنى رقم واحد",
+  "minimumOneLowercaseChar": "الحد الأدنى ١ حرف صغير",
+  "minimumOneUppercaseChar": "الحد الأدنى حرف كبير",
   "minimumSixChars": "الحد الأدنى 6 أحرف",
+  "minimumSpecialCharacters": "يجب أن تحتوي كلمة المرور على ١ من الرموز الخاصة",
   "password": "كلمة السر",
   "passwordsDoNotMatch": "كلمة المرور غير مطابقة",
   "phoneNumber": "رقم التلفون",

@@ -55,4 +55,19 @@ List<BlocProvider> multiBlocProvider = [
   BlocProvider<HomeIndexCubit>(
     create: (BuildContext context) => HomeIndexCubit(),
   ),
+  BlocProvider<MinimumSixCharsValidCubit>(
+    create: (BuildContext context) => MinimumSixCharsValidCubit(),
+  ),
+  BlocProvider<MinimumOneDigitValidCubit>(
+    create: (BuildContext context) => MinimumOneDigitValidCubit(),
+  ),
+  BlocProvider<MinimumOneLowerValidCubit>(
+    create: (BuildContext context) => MinimumOneLowerValidCubit(),
+  ),
+  BlocProvider<MinimumOneUpperValidCubit>(
+    create: (BuildContext context) => MinimumOneUpperValidCubit(),
+  ),
+  BlocProvider<MinimumOneSpecialCharValidCubit>(
+    create: (BuildContext context) => MinimumOneSpecialCharValidCubit(),
+  ),
 ];
