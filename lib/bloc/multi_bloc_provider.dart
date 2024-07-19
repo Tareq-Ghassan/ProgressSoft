@@ -3,13 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:progress_soft/bloc/config/config_bloc.dart';
 import 'package:progress_soft/bloc/forms/form_bloc.dart';
 import 'package:progress_soft/bloc/locale/locale_bloc.dart';
+import 'package:progress_soft/bloc/posts/posts_bloc.dart';
 import 'package:progress_soft/bloc/ui/ui_helper_bloc.dart';
 import 'package:progress_soft/data/repository/configration_repo.dart';
+import 'package:progress_soft/data/repository/posts_repo.dart';
 
 /// [multiBlocProvider] Holds multi BloC provider list
 List<BlocProvider> multiBlocProvider = [
   BlocProvider<ConfigrationBloc>(
     create: (context) => ConfigrationBloc(ConfigartionRepository()),
+  ),
+  BlocProvider<PostsBloc>(
+    create: (context) => PostsBloc(PostsRepository()),
   ),
   BlocProvider<LocaleCubit>(
     create: (BuildContext context) => LocaleCubit(),
@@ -46,5 +51,8 @@ List<BlocProvider> multiBlocProvider = [
   ),
   BlocProvider<VerifiactionIDCubit>(
     create: (BuildContext context) => VerifiactionIDCubit(),
+  ),
+  BlocProvider<HomeIndexCubit>(
+    create: (BuildContext context) => HomeIndexCubit(),
   ),
 ];

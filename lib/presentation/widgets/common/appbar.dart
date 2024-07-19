@@ -54,7 +54,8 @@ class AppBarLinearGradient extends StatelessWidget
   /// [leading] represent app bar leading
   final Widget? leading;
 
-  /// [leadingOnTap] represent on tap function for leading in case you choose [automaticallyImplyLeading]
+  /// [leadingOnTap] represent on tap function for leading in case you
+  /// choose [automaticallyImplyLeading]
   final void Function()? leadingOnTap;
 
   ////[automaticallyImplyLeading] Controls whether we should try to imply the leading widget if null.

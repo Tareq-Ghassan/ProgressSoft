@@ -7,7 +7,7 @@ import 'package:progress_soft/data/model/posts.dart';
 /// [PostsRepository] a repository class for app configartion
 class PostsRepository {
   /// [getPosts] function to get posts
-  static Future<void> getPosts() async {
+  Future<List<Posts>?> getPosts() async {
     try {
       // Making the HTTP GET request
       final response = await http
@@ -16,10 +16,9 @@ class PostsRepository {
       if (response.statusCode == 200) {
         // If the server returns a 200 OK response, parse the JSON
         final userJson = jsonDecode(response.body) as List<dynamic>;
-        final res = userJson
+        return userJson
             .map((json) => Posts.fromJson(json as Map<String, dynamic>))
             .toList();
-        debugPrint(res.first.body);
       } else {
         // If the server did not return a 200 OK response,
         // then throw an exception.
@@ -28,5 +27,6 @@ class PostsRepository {
     } catch (e) {
       debugPrint('Caught error: $e');
     }
+    return null;
   }
 }

@@ -18,6 +18,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
@@ -33,9 +34,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const LoginHeader(),
-                    const LoginForm(),
+                    LoginForm(
+                      formKey: _formKey,
+                    ),
                     ConfrimButton(
-                      onPressed: submitLogin,
+                      onPressed: () => submitLogin(_formKey),
                       title: appLocalizations.login,
                     ),
                     const OrWidget(),

@@ -6,6 +6,7 @@ class AppConfig {
   /// [regex] holds app regex
   RegexConfig? regex;
 
+  /// [countryCodes] holdes country codes
   CountryCodes? countryCodes;
 
   /// [errorMapping] holds app errors

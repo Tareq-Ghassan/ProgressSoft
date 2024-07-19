@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:progress_soft/bloc/config/config_bloc.dart';
 import 'package:progress_soft/bloc/forms/form_bloc.dart';
-import 'package:progress_soft/presentation/screens/home_screen.dart';
 import 'package:progress_soft/presentation/screens/register_screen.dart';
 import 'package:progress_soft/presentation/screens/root.dart';
+import 'package:progress_soft/presentation/widgets/common/loading_indecator.dart';
 
 final _firebase = FirebaseAuth.instance;
 
@@ -66,21 +66,35 @@ String? validateInputPassword(BuildContext context, String? value) {
 }
 
 /// [submitLogin] a function to submit login
-Future<void> submitLogin() async {
-  await _firebase
-      .signInWithEmailAndPassword(
-    email: '${navigatorKey.currentContext!.read<PhoneNumberCubit>().state}'
-        '@domain.com',
-    password: navigatorKey.currentContext!.read<PasswordCubit>().state,
-  )
-      .then((value) {
-    Navigator.push(
-      navigatorKey.currentContext!,
-      MaterialPageRoute<dynamic>(
-        builder: (context) => const HomeScreen(),
+Future<void> submitLogin(GlobalKey<FormState> formKey) async {
+  final isVaild = formKey.currentState!.validate();
+  if (!isVaild) {
+    return;
+  }
+  formKey.currentState!.save();
+  final phone = navigatorKey.currentContext!.read<PhoneNumberCubit>().state;
+  final code = navigatorKey.currentContext!.read<CountryCodeCubit>().state;
+  final password = navigatorKey.currentContext!.read<PasswordCubit>().state;
+  try {
+    LoadingIndicatorDialog().show(navigatorKey.currentContext!);
+
+    await _firebase.signInWithEmailAndPassword(
+      email: '$code$phone@domain.com',
+      password: password,
+    );
+    LoadingIndicatorDialog().dismiss();
+  } on FirebaseAuthException catch (e) {
+    LoadingIndicatorDialog().dismiss();
+    debugPrint(e.code);
+    if (e.code == 'email-already-in-use') {}
+
+    ScaffoldMessenger.of(navigatorKey.currentContext!).clearSnackBars();
+    ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
+      SnackBar(
+        content: Text(e.message ?? 'Authentication Failed'),
       ),
     );
-  });
+  }
 }
 
 /// a function to navigate to [RegisterScreen]

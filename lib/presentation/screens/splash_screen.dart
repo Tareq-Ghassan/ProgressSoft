@@ -90,6 +90,16 @@ class _SplashScreenState extends State<SplashScreen>
             TextAnimation(animations: _animations, text: _text),
           ],
         ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Text(
+            '© ${DateTime.now().year} $_text',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  color: Colors.grey,
+                ),
+          ),
+        ),
       ),
     );
   }

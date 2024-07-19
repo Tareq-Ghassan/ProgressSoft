@@ -34,3 +34,20 @@ class ShimmerCubit extends Cubit<bool> {
     debugPrint(change.toString());
   }
 }
+
+/// A [HomeIndexCubit] which manages `Home tabs` as its state
+class HomeIndexCubit extends Cubit<int> {
+  /// The initial state of the [HomeIndexCubit] is `0`.
+  HomeIndexCubit() : super(0);
+
+  /// [setIndex] function to set a new index value
+  void setIndex({required int newVal}) {
+    emit(newVal);
+  }
+
+  @override
+  void onChange(Change<int> change) {
+    super.onChange(change);
+    debugPrint(change.toString());
+  }
+}

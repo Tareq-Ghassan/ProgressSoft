@@ -124,4 +124,24 @@ void onSubmitRegister() {
   //     ),
   //   );
   // });
+
+  // final userCredential = await _firebase.createUserWithEmailAndPassword(
+  //   email: '$code$phone@domain.com',
+  //   password: password,
+  // );
+
+  // final storageRef = FirebaseStorage.instance
+  //     .ref()
+  //     .child("user_images")
+  //     .child("${userCredential.user!.uid}.jpg");
+  // await storageRef.putFile(_selectedImage!);
+  // final imageURL = await storageRef.getDownloadURL();
+  // await FirebaseFirestore.instance
+  //     .collection("users")
+  //     .doc(userCredential.user!.uid)
+  //     .set({
+  //   "username": _enteredUserName,
+  //   "email": _enteredEmail,
+  //   "image_url": imageURL
+  // });
 }

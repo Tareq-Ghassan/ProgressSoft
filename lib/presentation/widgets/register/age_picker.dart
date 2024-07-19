@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:progress_soft/bloc/forms/form_bloc.dart';
-import 'package:progress_soft/data/ages_list.dart';
 import 'package:progress_soft/presentation/constants/size.dart';
 import 'package:progress_soft/presentation/controller/registeration_view_controller.dart';
+
+/// [agesList] a list of ages from 12-100
+List<String> agesList = List.generate(89, (index) => (12 + index).toString());
 
 /// [AgePicker] represent age picker
 class AgePicker extends StatelessWidget {

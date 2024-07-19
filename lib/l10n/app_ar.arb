@@ -17,6 +17,7 @@
   "internalServerErrorDescription": " حدث خطأ أثناء إرسال البيانات. حاول مرة اخرى. إذا استمرت هذه المشكلة في الحدوث، فاتصل بمركز العملاء لدينا",
   "invalidPhoneNumberFormat": "تنسيق رقم الهاتف غير صحيح",
   "lang": "English",
+  "loading": "تحميل...",
   "login": "تسجيل الدخول",
   "minimumSixChars": "الحد الأدنى 6 أحرف",
   "password": "كلمة السر",

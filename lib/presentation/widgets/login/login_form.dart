@@ -10,7 +10,10 @@ import 'package:progress_soft/presentation/widgets/common/textfield/phone_number
 /// [LoginForm] represent login Form
 class LoginForm extends StatelessWidget {
   /// [LoginForm] consturctor
-  const LoginForm({super.key});
+  const LoginForm({required this.formKey, super.key});
+
+  ///[formKey] holds form state
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +22,7 @@ class LoginForm extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(pt16),
       child: Form(
+        key: formKey,
         child: Column(
           children: [
             const PhoneNumberTextField(),

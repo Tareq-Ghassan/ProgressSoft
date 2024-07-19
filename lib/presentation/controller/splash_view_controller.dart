@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:progress_soft/bloc/config/config_state.dart';
-import 'package:progress_soft/presentation/screens/login_screen.dart';
+import 'package:progress_soft/presentation/screens/auth.dart';
 import 'package:progress_soft/presentation/screens/root.dart';
 import 'package:progress_soft/presentation/widgets/common/dialog.dart';
 
@@ -15,7 +15,7 @@ void splashListenerController(BuildContext context, ConfigrationState state) {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute<dynamic>(
-        builder: (context) => const LoginScreen(),
+        builder: (context) => const Auth(),
       ),
     );
   } else if (state is ConfigrationFailure) {

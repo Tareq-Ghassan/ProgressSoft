@@ -17,6 +17,7 @@
   "internalServerErrorDescription": "An error occurred while sending the data. Please try again. If this issue keeps happening, contact our customer center",
   "invalidPhoneNumberFormat": "Invalid Phone Number Format",
   "lang": "العربية",
+  "loading": "Loading...",
   "login": "Login",
   "minimumSixChars": "Minimum 6 characters",
   "password": "Password",

@@ -19,7 +19,8 @@ const Color elevatedButtonColor = Color.fromRGBO(0, 23, 56, 1);
 ///[greenColor] this is the default green color
 const Color greenColor = Color.fromRGBO(35, 180, 97, 1);
 
-///[blueAppBarGradient] a list of colors which give Blue color Gradient for app bar
+///[blueAppBarGradient] a list of colors which give Blue color Gradient for
+///app bar
 final blueAppBarGradient = [
   const Color.fromRGBO(7, 44, 72, 1),
   const Color.fromRGBO(0, 23, 56, 1),
@@ -53,3 +54,24 @@ final greyGradient = [
   const Color.fromRGBO(209, 209, 209, 1),
   const Color.fromRGBO(235, 235, 235, 1),
 ];
+
+///[blueGradient] a list of colors which give Blue color Gradient
+final blueGradient = [
+  const Color.fromRGBO(95, 84, 160, 1),
+  const Color.fromRGBO(17, 157, 172, 1),
+];
+
+///[orangeGradient] a list of colors which give Orange color Gradient
+final orangeGradient = [
+  const Color.fromRGBO(137, 199, 74, 1),
+  const Color.fromRGBO(17, 157, 172, 1),
+];
+
+///[greenGradient] a list of colors which give Green color Gradient
+final greenGradient = [
+  const Color.fromRGBO(249, 174, 26, 1),
+  const Color.fromRGBO(239, 100, 32, 1),
+];
+
+///[yellowColor] this is the default yellow color
+const Color yellowColor = Color.fromARGB(255, 255, 209, 0);
