@@ -154,34 +154,36 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
                     height: 15,
                   ),
                   Row(
-                    mainAxisAlignment: widget.cancelButtontext != null
+                    mainAxisAlignment: (widget.cancelButtontext != null &&
+                            widget.yesButtontext != null)
                         ? MainAxisAlignment.spaceBetween
                         : MainAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        height: 48,
-                        child: ElevatedButton(
-                          onPressed: widget.yesButtontOnTap ??
-                              () => Navigator.popUntil(
-                                    context,
-                                    (route) => route.isFirst,
+                      if (widget.yesButtontext != null)
+                        SizedBox(
+                          height: 48,
+                          child: ElevatedButton(
+                            onPressed: widget.yesButtontOnTap ??
+                                () => Navigator.popUntil(
+                                      context,
+                                      (route) => route.isFirst,
+                                    ),
+                            style: widget.isYesButtonBlue
+                                ? null
+                                : const ButtonStyle(
+                                    backgroundColor: MaterialStatePropertyAll(
+                                      redColor,
+                                    ),
                                   ),
-                          style: widget.isYesButtonBlue
-                              ? null
-                              : const ButtonStyle(
-                                  backgroundColor: MaterialStatePropertyAll(
-                                    redColor,
-                                  ),
-                                ),
-                          child: Text(
-                            widget.yesButtontext!,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge!
-                                .copyWith(color: Colors.white),
+                            child: Text(
+                              widget.yesButtontext!,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge!
+                                  .copyWith(color: Colors.white),
+                            ),
                           ),
                         ),
-                      ),
                       if (widget.cancelButtontext != null)
                         SizedBox(
                           height: 54,
