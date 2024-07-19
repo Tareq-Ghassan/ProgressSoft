@@ -26,7 +26,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         .setCountryCode(newVal: '962');
     navigatorKey.currentContext!.read<PasswordCubit>().setPassword(newVal: '');
     navigatorKey.currentContext!.read<AgeCubit>().setAge(newVal: 0);
-    navigatorKey.currentContext!.read<GenderCubit>().setGender(newVal: '');
+    navigatorKey.currentContext!.read<GenderCubit>().setGender(newVal: 'Male');
     navigatorKey.currentContext!.read<FullNameCubit>().setFullName(newVal: '');
     super.initState();
   }

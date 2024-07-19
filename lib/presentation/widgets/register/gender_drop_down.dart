@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:progress_soft/bloc/forms/form_bloc.dart';
-import 'package:progress_soft/constants/enum/gender.dart';
+import 'package:progress_soft/enum/gender.dart';
 
 /// [GenderDropDown] reperesent gender picker
 class GenderDropDown extends StatelessWidget {

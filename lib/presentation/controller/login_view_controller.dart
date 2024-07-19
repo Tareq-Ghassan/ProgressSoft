@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -91,24 +92,33 @@ Future<void> submitLogin(GlobalKey<FormState> formKey) async {
     LoadingIndicatorDialog().dismiss();
     debugPrint(e.code);
     if (e.code == 'invalid-credential') {
+      LoadingIndicatorDialog().show(navigatorKey.currentContext!);
+      final isRegistered = await checkIfUserRegistered('$code$phone');
+      LoadingIndicatorDialog().dismiss();
       unawaited(
         showDialog(
           context: navigatorKey.currentContext!,
           builder: (context) => CustomDialogBox(
-            title: appLocalizations.info,
-            descriptions: appLocalizations.registerNow,
-            yesButtontext: appLocalizations.signUp,
+            title: isRegistered
+                ? appLocalizations.somethingWentWrong
+                : appLocalizations.info,
+            descriptions: isRegistered
+                ? appLocalizations.invalidCredentials
+                : appLocalizations.registerNow,
+            yesButtontext: isRegistered ? null : appLocalizations.signUp,
             isYesButtonBlue: true,
-            yesButtontOnTap: () {
-              Navigator.pop(context);
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute<dynamic>(
-                  builder: (context) => const RegisterScreen(),
-                ),
-                (route) => route.isFirst,
-              );
-            },
+            yesButtontOnTap: isRegistered
+                ? null
+                : () {
+                    Navigator.pop(context);
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute<dynamic>(
+                        builder: (context) => const RegisterScreen(),
+                      ),
+                      (route) => route.isFirst,
+                    );
+                  },
             cancelButtontext: appLocalizations.close,
             cancelButtonOnTap: () => Navigator.pop(context),
           ),
@@ -150,3 +160,24 @@ void registerNav() => Navigator.push(
         builder: (context) => const RegisterScreen(),
       ),
     );
+
+/// [checkIfUserRegistered] a function to check if user already registered
+Future<bool> checkIfUserRegistered(String phone) async {
+  final profiles = await FirebaseFirestore.instance.collection('profile').get();
+  if (profiles.docs.isNotEmpty) {
+    for (final doc in profiles.docs) {
+      if (doc.exists &&
+          doc['phone'] != null &&
+          (doc['phone'] as String).isNotEmpty) {
+        if (doc['phone'] == phone) {
+          return true;
+        }
+      } else {
+        return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  return false;
+}

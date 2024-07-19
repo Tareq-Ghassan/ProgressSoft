@@ -5,8 +5,10 @@ import 'package:progress_soft/bloc/forms/form_bloc.dart';
 import 'package:progress_soft/bloc/locale/locale_bloc.dart';
 import 'package:progress_soft/bloc/posts/posts_bloc.dart';
 import 'package:progress_soft/bloc/ui/ui_helper_bloc.dart';
+import 'package:progress_soft/bloc/userData/user_data_bloc.dart';
 import 'package:progress_soft/data/repository/configration_repo.dart';
 import 'package:progress_soft/data/repository/posts_repo.dart';
+import 'package:progress_soft/data/repository/user_data_repo.dart';
 
 /// [multiBlocProvider] Holds multi BloC provider list
 List<BlocProvider> multiBlocProvider = [
@@ -15,6 +17,9 @@ List<BlocProvider> multiBlocProvider = [
   ),
   BlocProvider<PostsBloc>(
     create: (context) => PostsBloc(PostsRepository()),
+  ),
+  BlocProvider<UserDataBloc>(
+    create: (context) => UserDataBloc(UserDataRepository()),
   ),
   BlocProvider<LocaleCubit>(
     create: (BuildContext context) => LocaleCubit(),

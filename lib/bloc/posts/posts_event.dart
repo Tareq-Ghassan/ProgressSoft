@@ -29,3 +29,15 @@ class ResetPosts extends PostsEvent {
   @override
   List<Object> get props => super.props;
 }
+
+/// [SearchPosts] search event
+class SearchPosts extends PostsEvent {
+  /// [SearchPosts] constructor.
+  const SearchPosts(this.query);
+
+  /// [query]
+  final String query;
+
+  @override
+  List<Object> get props => [query];
+}

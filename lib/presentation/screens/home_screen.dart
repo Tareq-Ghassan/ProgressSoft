@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:progress_soft/bloc/posts/posts_bloc.dart';
 import 'package:progress_soft/bloc/posts/posts_event.dart';
 import 'package:progress_soft/bloc/ui/ui_helper_bloc.dart';
+import 'package:progress_soft/bloc/userData/user_data_bloc.dart';
+import 'package:progress_soft/bloc/userdata/user_data_event.dart';
 import 'package:progress_soft/presentation/screens/root.dart';
 import 'package:progress_soft/presentation/widgets/common/appbar.dart';
 import 'package:progress_soft/presentation/widgets/home/bottom_navigation.dart';
@@ -25,6 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       BlocProvider.of<PostsBloc>(navigatorKey.currentContext!)
           .add(const FetchPosts());
+      BlocProvider.of<UserDataBloc>(navigatorKey.currentContext!)
+          .add(const FetchUserData());
     });
   }
 
@@ -35,8 +40,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: const AppBarLinearGradient(title: 'Home'),
+      appBar: AppBarLinearGradient(title: appLocalizations.home),
       body: BlocBuilder<HomeIndexCubit, int>(
         builder: (context, state) => activeTabs[state],
       ),

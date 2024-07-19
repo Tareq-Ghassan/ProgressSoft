@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:progress_soft/bloc/locale/locale_bloc.dart';
-import 'package:progress_soft/constants/enum/locale_enum.dart';
+import 'package:progress_soft/enum/locale_enum.dart';
 import 'package:progress_soft/presentation/constants/images.dart';
 import 'package:progress_soft/presentation/constants/size.dart';
 

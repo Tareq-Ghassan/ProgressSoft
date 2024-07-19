@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:progress_soft/constants/enum/locale_enum.dart';
+import 'package:progress_soft/enum/locale_enum.dart';
 
 /// A [LocaleCubit] which manages an `Locale` as its state
 class LocaleCubit extends Cubit<Locale> {

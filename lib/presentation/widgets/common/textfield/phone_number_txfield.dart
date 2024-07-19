@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:progress_soft/bloc/config/config_bloc.dart';
 import 'package:progress_soft/bloc/forms/form_bloc.dart';
-import 'package:progress_soft/constants/enum/locale_enum.dart';
+import 'package:progress_soft/enum/locale_enum.dart';
 import 'package:progress_soft/presentation/constants/size.dart';
 import 'package:progress_soft/presentation/controller/login_view_controller.dart';
 

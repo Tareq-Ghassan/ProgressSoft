@@ -1,3 +1,6 @@
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:progress_soft/presentation/screens/root.dart';
+
 /// [Gender] an enum holds Gender Values
 enum Gender {
   /// [male]
@@ -13,9 +16,9 @@ extension GenderExtension on Gender {
   String get name {
     switch (this) {
       case Gender.male:
-        return 'Male';
+        return AppLocalizations.of(navigatorKey.currentContext!)!.male;
       case Gender.female:
-        return 'Female';
+        return AppLocalizations.of(navigatorKey.currentContext!)!.female;
     }
   }
 }

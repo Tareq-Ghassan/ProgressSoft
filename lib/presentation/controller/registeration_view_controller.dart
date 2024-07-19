@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,10 +6,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:progress_soft/bloc/config/config_bloc.dart';
 import 'package:progress_soft/bloc/forms/form_bloc.dart';
 import 'package:progress_soft/presentation/constants/size.dart';
-import 'package:progress_soft/presentation/screens/otp.dart';
+import 'package:progress_soft/presentation/screens/otp_screen.dart';
 import 'package:progress_soft/presentation/screens/root.dart';
-
-final _firebase = FirebaseAuth.instance;
 
 /// * validate if fullname is empty or not
 String? validateFullname(BuildContext context, String? value) {
@@ -120,7 +117,6 @@ String? validatePassword(BuildContext context, String? value) {
     }
     if (value.isEmpty) {
       WidgetsBinding.instance.addPostFrameCallback((_) async {
-        // You can add any additional logic or state changes here
         navigatorKey.currentContext!
             .read<MinimumOneUpperValidCubit>()
             .setMinimumOneUpperValidCubit(

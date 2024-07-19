@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:progress_soft/presentation/constants/size.dart';
 
 /// [OrWidget] ui design for OR in `LoginScreen`
@@ -10,6 +11,8 @@ class OrWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appLocalizations = AppLocalizations.of(context)!;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -20,7 +23,7 @@ class OrWidget extends StatelessWidget {
             indent: pt16,
           ),
         ),
-        const Text('or'),
+        Text(appLocalizations.or),
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.46,
           child: Divider(

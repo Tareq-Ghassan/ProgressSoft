@@ -18,6 +18,7 @@ final _firebase = FirebaseAuth.instance;
 Future<void> sendOTP(String phone) async {
   final appLocalizations = AppLocalizations.of(navigatorKey.currentContext!)!;
   LoadingIndicatorDialog().show(navigatorKey.currentContext!);
+
   await _firebase.verifyPhoneNumber(
     phoneNumber: '+$phone',
     timeout: const Duration(seconds: 60),
