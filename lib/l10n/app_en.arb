@@ -7,6 +7,7 @@
     }
   },
   "allowedSpecialCharacters": "Allowed special characters ( -,_,@, $)",
+  "close": "Close",
   "confirm": "Confirm",
   "confrimPassword": "Confirm password",
   "enterThe6DigitNumber": "Enter the 6 digit number that we sent to",
@@ -15,8 +16,10 @@
   "followRules": "Please follow the rules",
   "fullName": "Full name",
   "fullnameMustBe2Syllables": "Full name must be 2 syllables or more",
+  "info": "Info",
   "internalServerError": "Unable to process the request",
   "internalServerErrorDescription": "An error occurred while sending the data. Please try again. If this issue keeps happening, contact our customer center",
+  "invalidCredentials": "Invalid credentials",
   "invalidPhoneNumberFormat": "Invalid Phone Number Format",
   "lang": "العربية",
   "loading": "Loading...",
@@ -31,8 +34,11 @@
   "phoneNumber": "Phone number",
   "pleaseEnterValidation": "Please enter {type, select, mobile{phone number}  pass {your Password} age {your Age} fullname{full Name} gender {gender} other{{type}}}",
   "progressSoft": "ProgressSoft",
+  "registerNow": "do you want to register?",
   "selectAge": "Select your age",
   "signUp": "Register",
   "somethingWentWrong": "Unable to complete request!",
-  "somethingWentWrongDescription": "An error occurred while retrieving the data. Please try again. If this issue keeps happening, contact our customer center"
+  "somethingWentWrongDescription": "An error occurred while retrieving the data. Please try again. If this issue keeps happening, contact our customer center",
+  "verificationFailed": "failed to verifay your phone",
+  "verifyOtpFailed": "Wrong OTP"
 }

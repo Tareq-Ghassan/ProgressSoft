@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +9,6 @@ import 'package:progress_soft/bloc/forms/form_bloc.dart';
 import 'package:progress_soft/presentation/constants/size.dart';
 import 'package:progress_soft/presentation/screens/otp.dart';
 import 'package:progress_soft/presentation/screens/root.dart';
-import 'package:progress_soft/presentation/widgets/common/dialog.dart';
-import 'package:progress_soft/presentation/widgets/common/loading_indecator.dart';
 
 final _firebase = FirebaseAuth.instance;
 
@@ -51,98 +47,76 @@ String? validatePassword(BuildContext context, String? value) {
     // Minimum 1 Special character
     if (containsSpecialCharacter(value)) {
       // Special character found
-      // WidgetsBinding.instance.addPostFrameCallback((_) async {
       navigatorKey.currentContext!
           .read<MinimumOneSpecialCharValidCubit>()
           .setMinimumOneSpecialCharValid(
             newVal: true,
           );
-      // });
     } else {
       // No special character found
-      // WidgetsBinding.instance.addPostFrameCallback((_) async {
       navigatorKey.currentContext!
           .read<MinimumOneSpecialCharValidCubit>()
           .setMinimumOneSpecialCharValid(
             newVal: false,
           );
-      // });
     }
-
     // Minimum 6 characters
     if (value.length > 6) {
-      // WidgetsBinding.instance.addPostFrameCallback((_) async {
       navigatorKey.currentContext!
           .read<MinimumSixCharsValidCubit>()
           .setMinimumSixCharsValid(
             newVal: true,
           );
-      // });
     } else {
-      // WidgetsBinding.instance.addPostFrameCallback((_) async {
       navigatorKey.currentContext!
           .read<MinimumSixCharsValidCubit>()
           .setMinimumSixCharsValid(
             newVal: false,
           );
-      // });
     }
-
     // Minimum 1 digit
     if (RegExp(r'\d').hasMatch(value)) {
-      // WidgetsBinding.instance.addPostFrameCallback((_) async {
       navigatorKey.currentContext!
           .read<MinimumOneDigitValidCubit>()
           .setMinimumOneDigitValidCubit(
             newVal: true,
           );
-      // });
     } else {
-      // WidgetsBinding.instance.addPostFrameCallback((_) async {
       navigatorKey.currentContext!
           .read<MinimumOneDigitValidCubit>()
           .setMinimumOneDigitValidCubit(
             newVal: false,
           );
-      // });
     }
 
     // Minimum 1 lowercase character
     if (RegExp('[a-z]').hasMatch(value)) {
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
-        navigatorKey.currentContext!
-            .read<MinimumOneLowerValidCubit>()
-            .setMinimumOneLowerValidCubit(
-              newVal: true,
-            );
-      });
+      navigatorKey.currentContext!
+          .read<MinimumOneLowerValidCubit>()
+          .setMinimumOneLowerValidCubit(
+            newVal: true,
+          );
     } else {
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
-        navigatorKey.currentContext!
-            .read<MinimumOneLowerValidCubit>()
-            .setMinimumOneLowerValidCubit(
-              newVal: false,
-            );
-      });
+      navigatorKey.currentContext!
+          .read<MinimumOneLowerValidCubit>()
+          .setMinimumOneLowerValidCubit(
+            newVal: false,
+          );
     }
 
     // Minimum 1 uppercase character
     if (RegExp('[A-Z]').hasMatch(value)) {
-      // WidgetsBinding.instance.addPostFrameCallback((_) async {
       navigatorKey.currentContext!
           .read<MinimumOneUpperValidCubit>()
           .setMinimumOneUpperValidCubit(
             newVal: true,
           );
-      // });
     } else {
-      // WidgetsBinding.instance.addPostFrameCallback((_) async {
       navigatorKey.currentContext!
           .read<MinimumOneUpperValidCubit>()
           .setMinimumOneUpperValidCubit(
             newVal: false,
           );
-      // });
     }
     if (value.isEmpty) {
       WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -228,7 +202,6 @@ void showAgePickerDialog(Widget child) {
 
 /// [onSubmitRegister] function to register user
 Future<void> onSubmitRegister(GlobalKey<FormState> formKey) async {
-  final appLocalizations = AppLocalizations.of(navigatorKey.currentContext!)!;
   final isVaild = formKey.currentState!.validate();
   if (!isVaild) {
     return;
@@ -236,82 +209,10 @@ Future<void> onSubmitRegister(GlobalKey<FormState> formKey) async {
   formKey.currentState!.save();
   final phone = navigatorKey.currentContext!.read<PhoneNumberCubit>().state;
   final code = navigatorKey.currentContext!.read<CountryCodeCubit>().state;
-  final password = navigatorKey.currentContext!.read<PasswordCubit>().state;
-  final age = navigatorKey.currentContext!.read<AgeCubit>().state;
-  final gender = navigatorKey.currentContext!.read<GenderCubit>().state;
-  final fullName = navigatorKey.currentContext!.read<FullNameCubit>().state;
-
-  try {
-    LoadingIndicatorDialog().show(navigatorKey.currentContext!);
-
-    final userCredential = await _firebase.createUserWithEmailAndPassword(
-      email: '$code$phone@domain.com',
-      password: password,
-    );
-
-    await FirebaseFirestore.instance
-        .collection('profile')
-        .doc(userCredential.user!.uid)
-        .set({
-      'fullName': fullName,
-      'phone': '$code$phone',
-      'age': age,
-      'gender': gender,
-    }).then((_) {
-      LoadingIndicatorDialog().dismiss();
-      Navigator.push(
-        navigatorKey.currentContext!,
-        MaterialPageRoute<dynamic>(
-          builder: (context) => const OTPScreen(),
-        ),
-      );
-    });
-    LoadingIndicatorDialog().dismiss();
-  } on FirebaseAuthException catch (e) {
-    LoadingIndicatorDialog().dismiss();
-    debugPrint(e.code);
-    if (e.code == 'user-credential') {
-      unawaited(
-        showDialog(
-          context: navigatorKey.currentContext!,
-          builder: (context) => CustomDialogBox(
-            title: appLocalizations.somethingWentWrong,
-            descriptions: 'invalid credential',
-            yesButtontext: appLocalizations.exit,
-            yesButtontOnTap: () => Navigator.pop(context),
-          ),
-        ),
-      );
-      return;
-    }
-    if (e.code == 'user-not-found') {
-      unawaited(
-        showDialog(
-          context: navigatorKey.currentContext!,
-          builder: (context) => CustomDialogBox(
-            title: appLocalizations.somethingWentWrong,
-            descriptions: appLocalizations.somethingWentWrongDescription,
-            yesButtontext: appLocalizations.exit,
-            yesButtontOnTap: () {
-              Navigator.pop(context);
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute<dynamic>(
-              //     builder: (context) => const RegisterScreen(),
-              //   ),
-              // );
-            },
-          ),
-        ),
-      );
-      return;
-    }
-
-    ScaffoldMessenger.of(navigatorKey.currentContext!).clearSnackBars();
-    ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
-      SnackBar(
-        content: Text(e.message ?? ''),
-      ),
-    );
-  }
+  await Navigator.push(
+    navigatorKey.currentContext!,
+    MaterialPageRoute<dynamic>(
+      builder: (context) => OTPScreen(phone: '$code$phone'),
+    ),
+  );
 }

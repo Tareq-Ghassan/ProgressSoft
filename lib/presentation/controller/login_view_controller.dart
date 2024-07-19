@@ -95,44 +95,51 @@ Future<void> submitLogin(GlobalKey<FormState> formKey) async {
         showDialog(
           context: navigatorKey.currentContext!,
           builder: (context) => CustomDialogBox(
-            title: appLocalizations.somethingWentWrong,
-            descriptions: 'invalid credential',
-            yesButtontext: appLocalizations.exit,
-            yesButtontOnTap: () => Navigator.pop(context),
-          ),
-        ),
-      );
-      return;
-    }
-    if (e.code == 'user-not-found') {
-      unawaited(
-        showDialog(
-          context: navigatorKey.currentContext!,
-          builder: (context) => CustomDialogBox(
-            title: appLocalizations.somethingWentWrong,
-            descriptions: appLocalizations.somethingWentWrongDescription,
-            yesButtontext: appLocalizations.exit,
+            title: appLocalizations.info,
+            descriptions: appLocalizations.registerNow,
+            yesButtontext: appLocalizations.signUp,
+            isYesButtonBlue: true,
             yesButtontOnTap: () {
               Navigator.pop(context);
-              Navigator.push(
+              Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute<dynamic>(
                   builder: (context) => const RegisterScreen(),
                 ),
+                (route) => route.isFirst,
               );
             },
+            cancelButtontext: appLocalizations.close,
+            cancelButtonOnTap: () => Navigator.pop(context),
           ),
         ),
       );
       return;
     }
 
-    ScaffoldMessenger.of(navigatorKey.currentContext!).clearSnackBars();
-    ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
-      SnackBar(
-        content: Text(e.message ?? 'Authentication Failed'),
+    unawaited(
+      showDialog(
+        context: navigatorKey.currentContext!,
+        builder: (context) => CustomDialogBox(
+          title: appLocalizations.somethingWentWrong,
+          descriptions: appLocalizations.somethingWentWrongDescription,
+          yesButtontext: appLocalizations.signUp,
+          isYesButtonBlue: true,
+          yesButtontOnTap: () {
+            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute<dynamic>(
+                builder: (context) => const RegisterScreen(),
+              ),
+            );
+          },
+          cancelButtontext: appLocalizations.close,
+          cancelButtonOnTap: () => Navigator.pop(context),
+        ),
       ),
     );
+    return;
   }
 }
 

@@ -7,6 +7,7 @@
     }
   },
   "allowedSpecialCharacters": "الرموز الخاصة المسموح بها ( -, _, @, $)",
+  "close": "اغلاق",
   "confirm": "تاكيد",
   "confrimPassword": "تأكيد كلمة المرور",
   "enterThe6DigitNumber": "أدخل الرقم المكون من 6 أرقام الذي أرسلناه الى",
@@ -15,8 +16,10 @@
   "followRules": "يرجى اتباع القواعد",
   "fullName": "الاسم الكامل",
   "fullnameMustBe2Syllables": "يجب أن يتكون الإسم الكامل من مقطعيين أو أكثر",
+  "info": "معلومات",
   "internalServerError": "غير قادر على معالجة الطلب",
   "internalServerErrorDescription": " حدث خطأ أثناء إرسال البيانات. حاول مرة اخرى. إذا استمرت هذه المشكلة في الحدوث، فاتصل بمركز العملاء لدينا",
+  "invalidCredentials": "لقد قمت بادخال معلومات دخول غير صحيحة",
   "invalidPhoneNumberFormat": "تنسيق رقم الهاتف غير صحيح",
   "lang": "English",
   "loading": "تحميل...",
@@ -31,8 +34,11 @@
   "phoneNumber": "رقم التلفون",
   "pleaseEnterValidation": "الرجاء ادخال {type, select, mobile{رقم الموبايل} pass {الرمز السري} age {ادخل عمرك} fullname{الاسم الكامل} gender {الجنس} other{{type}}}",
   "progressSoft": "ProgressSoft",
+  "registerNow": "هل ترغب في التسجيل؟",
   "selectAge": "حدد عمرك",
   "signUp": "تسجيل",
   "somethingWentWrong": "غير قادر على إكمال الطلب",
-  "somethingWentWrongDescription": "حدث خطأ أثناء استرداد البيانات. حاول مرة اخرى. إذا استمرت هذه المشكلة في الحدوث، فاتصل بمركز العملاء لدينا"
+  "somethingWentWrongDescription": "حدث خطأ أثناء استرداد البيانات. حاول مرة اخرى. إذا استمرت هذه المشكلة في الحدوث، فاتصل بمركز العملاء لدينا",
+  "verificationFailed": "فشل في التحقق من هاتفك",
+  "verifyOtpFailed": "كلمة المرور لمرة واحدة خاطئة"
 }

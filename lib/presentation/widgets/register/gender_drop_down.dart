@@ -15,7 +15,7 @@ class GenderDropDown extends StatelessWidget {
     return DropdownMenu<String>(
       initialSelection: gender.first,
       onSelected: (String? value) {
-        context.read<GenderCubit>().setAge(newVal: value ?? '');
+        context.read<GenderCubit>().setGender(newVal: value ?? '');
       },
       dropdownMenuEntries:
           gender.map<DropdownMenuEntry<String>>((String value) {

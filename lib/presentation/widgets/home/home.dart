@@ -19,7 +19,13 @@ class HomePage extends StatelessWidget {
             ? ListTileShimmer(
                 isLoading: state is PostsIsLoading,
               )
-            : PostsListTile(post: state.props.first[index]),
+            : state.props.isEmpty
+                ? const ListTileShimmer(
+                    isLoading: true,
+                  )
+                : PostsListTile(
+                    post: state.props.first[index],
+                  ),
         itemCount: state is PostsIsLoading
             ? 10
             : state.props.isNotEmpty

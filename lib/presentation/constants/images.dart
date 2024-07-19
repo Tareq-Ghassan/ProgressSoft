@@ -16,6 +16,7 @@ class AppImages extends InheritedWidget {
       context.dependOnInheritedWidgetOfExactType<AppImages>()!;
 
   String get appIconWithText => 'assets/images/progressSoftWithText.png';
+  String get signinChart => 'assets/images/Sign In Chart.png';
 
   @override
   bool updateShouldNotify(AppImages oldWidget) => false;

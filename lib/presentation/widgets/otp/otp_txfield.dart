@@ -31,7 +31,8 @@ class OTPTextField extends StatelessWidget {
             ),
             onCodeChanged: (code) {
               debugPrint('OnCodeChanged : $code');
-              context.read<OTPCubit>().setOTP(newVal: code ?? '');
+              code = replaceArabicNumber(code ?? '');
+              context.read<OTPCubit>().setOTP(newVal: code);
 
               if (context.read<OTPCubit>().state.length == 6) {
                 verifyOTP(
@@ -47,4 +48,17 @@ class OTPTextField extends StatelessWidget {
       ),
     );
   }
+}
+
+/// [replaceArabicNumber] to convert arabic numbers to english
+String replaceArabicNumber(String input) {
+  const english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  const arabic = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+
+  var result = input;
+  for (var i = 0; i < english.length; i++) {
+    result = result.replaceAll(arabic[i], english[i]);
+  }
+  debugPrint(result);
+  return result;
 }

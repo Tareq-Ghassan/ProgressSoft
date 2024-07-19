@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_soft/presentation/constants/colors.dart';
 import 'package:progress_soft/presentation/constants/icons.dart';
@@ -29,7 +30,9 @@ class ProfilePage extends StatelessWidget {
         ],
       ),
       trailing: TextButton.icon(
-        onPressed: () {},
+        onPressed: () {
+          FirebaseAuth.instance.signOut();
+        },
         icon: Image.asset(icons.logoutIcon),
         label: const Text('Logout'),
       ),

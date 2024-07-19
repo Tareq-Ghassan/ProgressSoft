@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:progress_soft/bloc/forms/form_bloc.dart';
 import 'package:progress_soft/presentation/constants/colors.dart';
 import 'package:progress_soft/presentation/controller/registeration_view_controller.dart';
+import 'package:progress_soft/presentation/screens/root.dart';
 import 'package:progress_soft/presentation/widgets/common/confirm_button.dart';
 import 'package:progress_soft/presentation/widgets/register/register_form.dart';
 
@@ -15,6 +18,19 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  @override
+  void initState() {
+    navigatorKey.currentContext!.read<PhoneNumberCubit>().setPhone(newVal: '');
+    navigatorKey.currentContext!
+        .read<CountryCodeCubit>()
+        .setCountryCode(newVal: '962');
+    navigatorKey.currentContext!.read<PasswordCubit>().setPassword(newVal: '');
+    navigatorKey.currentContext!.read<AgeCubit>().setAge(newVal: 0);
+    navigatorKey.currentContext!.read<GenderCubit>().setGender(newVal: '');
+    navigatorKey.currentContext!.read<FullNameCubit>().setFullName(newVal: '');
+    super.initState();
+  }
+
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {

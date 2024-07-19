@@ -11,8 +11,12 @@ import 'package:progress_soft/presentation/widgets/otp/otp_txfield.dart';
 class OTPScreen extends StatefulWidget {
   /// [OTPScreen] consturctor.
   const OTPScreen({
+    required this.phone,
     super.key,
   });
+
+  /// [phone] represent phone
+  final String phone;
 
   @override
   State<OTPScreen> createState() => _OTPScreenState();
@@ -23,7 +27,7 @@ class _OTPScreenState extends State<OTPScreen> {
   void initState() {
     listenSms();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await sendOTP();
+      await sendOTP(widget.phone);
     });
     super.initState();
   }
@@ -74,13 +78,15 @@ class _OTPScreenState extends State<OTPScreen> {
               ],
             ),
           ),
-          bottomNavigationBar: ConfrimButton(
-            title: appLocalizations.confirm,
-            onPressed: context.read<OTPCubit>().state.length == 6
-                ? () => verifyOTP(
-                      context.read<OTPCubit>().state,
-                    )
-                : null,
+          bottomNavigationBar: BlocBuilder<OTPCubit, String>(
+            builder: (context, state) => ConfrimButton(
+              title: appLocalizations.confirm,
+              onPressed: state.length == 6
+                  ? () => verifyOTP(
+                        context.read<OTPCubit>().state,
+                      )
+                  : null,
+            ),
           ),
         ),
       ),

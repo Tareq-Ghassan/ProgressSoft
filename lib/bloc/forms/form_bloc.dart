@@ -108,8 +108,8 @@ class GenderCubit extends Cubit<String> {
   /// The initial state of the [GenderCubit] is `0`.
   GenderCubit() : super('Male');
 
-  /// [setAge] function to set a new value for age
-  void setAge({required String newVal}) {
+  /// [setGender] function to set a new value for age
+  void setGender({required String newVal}) {
     emit(newVal);
   }
 

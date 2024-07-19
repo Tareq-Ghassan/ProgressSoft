@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:progress_soft/bloc/forms/form_bloc.dart';
 import 'package:progress_soft/bloc/ui/ui_helper_bloc.dart';
+import 'package:progress_soft/presentation/constants/images.dart';
 import 'package:progress_soft/presentation/controller/login_view_controller.dart';
+import 'package:progress_soft/presentation/screens/root.dart';
 import 'package:progress_soft/presentation/widgets/common/confirm_button.dart';
 import 'package:progress_soft/presentation/widgets/login/login_form.dart';
 import 'package:progress_soft/presentation/widgets/login/login_header.dart';
@@ -18,10 +21,21 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void initState() {
+    navigatorKey.currentContext!.read<PhoneNumberCubit>().setPhone(newVal: '');
+    navigatorKey.currentContext!
+        .read<CountryCodeCubit>()
+        .setCountryCode(newVal: '962');
+    navigatorKey.currentContext!.read<PasswordCubit>().setPassword(newVal: '');
+    super.initState();
+  }
+
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final appLocalizations = AppLocalizations.of(context)!;
+    final images = AppImages.of(context);
 
     return BlocProvider(
       create: (_) => HidePasswordCubit(),
@@ -37,6 +51,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     LoginForm(
                       formKey: _formKey,
                     ),
+                    Image.asset(images.signinChart),
+                  ],
+                ),
+              ),
+            ),
+            bottomNavigationBar: SafeArea(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
                     ConfrimButton(
                       onPressed: () => submitLogin(_formKey),
                       title: appLocalizations.login,

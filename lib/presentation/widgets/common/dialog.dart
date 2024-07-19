@@ -53,11 +53,6 @@ class CustomDialogBox extends StatefulWidget {
           (yesButtontext == null && yesButtontOnTap == null) ||
               (yesButtontext != null && yesButtontOnTap != null),
           'Both yesButtontext and yesButtontOnTap must be provided together',
-        ),
-        assert(
-          (cancelButtontext == null && cancelButtonOnTap == null) ||
-              (yesButtontext == null && yesButtontOnTap == null),
-          'Cancel button requires both yes button text and tap callback.',
         );
 
   /// [title] must not be null, this represent the Title in the Alert
