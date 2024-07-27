@@ -1,3 +1,4 @@
+
 # ProgressSoft
 
 ProgressSoft is a sample Flutter application that demonstrates the use of BloC state management and Firebase. The app is designed to work on both iOS and Android platforms and contains seven screens: splash, login, registration, OTP, and a home page with two tabs (posts tab and profile tab).
@@ -95,3 +96,6 @@ If you have any questions or feedback, feel free to reach out to me at
 
 Linkedin: www.linkedin.com/in/Tareq-ghassan
 
+## Localization
+
+ProgressSoft supports localization with English and Arabic languages implemented.
