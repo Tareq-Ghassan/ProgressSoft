@@ -22,13 +22,17 @@ ProgressSoft is a sample Flutter application that demonstrates the use of BloC s
 ## Screenshots
 
 En:
+
  **Splash Screen**
+
 <img src="https://github.com/user-attachments/assets/f1e93542-3844-4a11-b6d2-199d3adcaf50" alt="Splash Screen" height="250"/>
 
  **Login Screen**
+
 <img src="https://github.com/user-attachments/assets/7b6b54be-76df-4dd3-98ec-6ab8fe444c59" alt="Login Screen" height="250"/>
 
  **Registration Screen**
+
 <img src="https://github.com/user-attachments/assets/f1beeb92-0499-4269-adb6-1c930bf1ad69" alt="Registration Screen" height="250"/>
 
  **Home Page**
@@ -41,9 +45,11 @@ En:
 Ar:
 
  **Login Screen**
+
 <img src="https://github.com/user-attachments/assets/acb6cc4d-31fe-4f43-8c96-5d6cf93ef0ea" alt="Login Screen" height="250"/>
 
  **Registration Screen**
+
 <img src="https://github.com/user-attachments/assets/a5edd395-7f0c-4e5d-8705-4a2b0812fea3" alt="Registration Screen" height="250"/>
 
 ## Screen record
