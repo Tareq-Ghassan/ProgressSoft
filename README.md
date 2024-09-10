@@ -62,7 +62,7 @@ To get started with ProgressSoft, follow these steps:
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/ProgressSoft.git
+    git clone https://github.com/Tareq-Ghassan/ProgressSoft.git
     ```
 2. **Navigate to the project directory**:
     ```bash
